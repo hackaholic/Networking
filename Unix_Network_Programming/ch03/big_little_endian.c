@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     printf("lowest memory value %x,  heighest memory val: %x\n", *p, *(p+1));
 
 
-    if(*p == 12) {
+    if(*p == 0x12) {
         printf("Big-Endian\n");  
     }
     else {

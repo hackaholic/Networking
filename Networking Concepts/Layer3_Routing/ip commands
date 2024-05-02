@@ -1,0 +1,33 @@
+# Create network namespace
+ip netns add s1
+ip netns add s2
+
+# create virtual interface
+ip link add veth1a type veth peer name veth1b
+
+# Move veth1a and veth2a into Their Respective Network Namespaces:
+ip link set veth1a netns s1
+ip link set veth1b netns s2
+
+
+ip netns exec s1 ip addr add 192.168.1.1/24 dev veth1a
+ip netns exec s2 ip addr add 192.168.2.1/24 dev veth1b
+
+# Bring up veth1a and veth1b in their respective namespaces
+ip netns exec s1 ip link set dev veth1a up
+ip netns exec s2 ip link set dev veth1b up
+
+
+# Set up loopback interfaces in each namespace
+ip netns exec s1 ip link set lo up
+ip netns exec s2 ip link set lo up
+
+# add route in subnet1 and subnet2 
+ip netns exec s1 ip route add 192.168.1.2/32 dev veth1a
+ip netns exec s2 ip route add 192.168.1.1/32 dev veth1b
+
+
+# allow ip forwarding
+sysctl net.ipv4.ip_forward=1
+
+
