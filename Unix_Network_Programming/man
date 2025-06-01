@@ -1,0 +1,9 @@
+    man 1 <topic>: Display the manual page for a command-line executable or program.
+    man 2 <topic>: Display the manual page for a system call or kernel function.
+    man 3 <topic>: Display the manual page for a C library function.
+    man 4 <topic>: Display the manual page for a device file or driver.
+    man 5 <topic>: Display the manual page for a file format or configuration file.
+    man 6 <topic>: Display the manual page for a game or other non-standard program.
+    man 7 <topic>: Display miscellaneous information, including conventions and standards.
+    man 8 <topic>: Display the manual page for a system administration command or daemon.
+    man 9 <topic>: Display kernel routine documentation.
